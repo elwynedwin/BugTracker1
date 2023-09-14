@@ -3,13 +3,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const handleLogin = async (req, res) => {
-  const { user, password } = req.body;
-  if (!user || !password)
+  const { username, password } = req.body;
+  if (!username || !password)
     return res
       .status(400)
       .json({ message: "Username and password are required." });
 
-  const searchedUser = await User.findOne({ username: user }).exec();
+  const searchedUser = await User.findOne({ username: username }).exec();
   if (!searchedUser) return res.sendStatus(401);
   // evaluate password
   const passwordCompare = await bcrypt.compare(password, searchedUser.password);
@@ -31,7 +31,7 @@ const handleLogin = async (req, res) => {
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "1d" }
     );
-    // Saving refreshToken with current user
+    // Saving refreshToken with current username
     searchedUser.refreshToken = refreshToken;
     const result = await searchedUser.save();
     console.log(result);
@@ -45,7 +45,7 @@ const handleLogin = async (req, res) => {
       maxAge: 24 * 60 * 60 * 1000,
     });
 
-    // Send authorization roles and access token to user
+    // Send authorization roles and access token to use
     res.json({ roles, accessToken });
   } else {
     res.sendStatus(401);
