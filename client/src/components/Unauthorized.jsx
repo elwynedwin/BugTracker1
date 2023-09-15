@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Unauthorised = () => {
+const Unauthorized = () => {
   const navigate = useNavigate();
 
   // useNavigate (-1) directs user to the last previously loaded page
@@ -9,7 +9,7 @@ const Unauthorised = () => {
 
   return (
     <>
-      <h1>Unauthorised</h1>
+      <h1>Unauthorized</h1>
       <p>You dont have access to this page!</p>
       <div>
         <button onClick={previousPage}> Previous Page </button>
@@ -18,4 +18,4 @@ const Unauthorised = () => {
   );
 };
 
-export default Unauthorised;
+export default Unauthorized;

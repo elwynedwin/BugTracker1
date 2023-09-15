@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "../api/axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -37,15 +38,15 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      const accessToken = response.data.accessToken;
-      const roles = response.data.roles;
+      const accessToken = response?.data?.accessToken;
+      const roles = response?.data?.roles;
 
       setAuth({ username, password, roles, accessToken });
       setUsername("");
       setPassword("");
       navigate(fromLocation, { replace: true });
     } catch (error) {
-      if (!error.response) {
+      if (!error?.response) {
         setErrMsg("No Server Response");
       } else if (error.response.status === 400) {
         setErrMsg("Missing Username or Password");

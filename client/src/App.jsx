@@ -4,7 +4,7 @@ import NotFound from "./components/NotFound";
 import Admin from "./components/Admin";
 import Editor from "./components/Editor";
 import RequireAuth from "./components/RequireAuth";
-import Unauthorised from "./components/Unauthorised";
+import Unauthorized from "./components/Unauthorized";
 import Home from "./components/Home";
 import "./css/app.css";
 
@@ -24,7 +24,7 @@ function App() {
         {/* public routes */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="unauthorised" element={<Unauthorised />} />
+        <Route path="unauthorized" element={<Unauthorized />} />
 
         {/* protected routes */}
         <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
