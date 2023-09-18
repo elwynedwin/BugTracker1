@@ -2,7 +2,8 @@ import { useRef, useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "../api/axios";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useInput from "../hooks/useInput";
+import useToggle from "../hooks/useToggle";
 
 const Login = () => {
   const { setAuth } = useAuth();
@@ -14,9 +15,10 @@ const Login = () => {
   const userRef = useRef();
   const errRef = useRef();
 
-  const [username, setUsername] = useState("");
+  const [username, resetUser, userAttribute] = useInput("user", "");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
+  const [check, toggleCheck] = useToggle("persist", false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -38,11 +40,13 @@ const Login = () => {
           withCredentials: true,
         }
       );
+      console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
 
       setAuth({ username, password, roles, accessToken });
-      setUsername("");
+      //setUsername("");
+      resetUser();
       setPassword("");
       navigate(fromLocation, { replace: true });
     } catch (error) {
@@ -58,6 +62,14 @@ const Login = () => {
       errRef.current.focus();
     }
   };
+
+  // const togglePersist = () => {
+  //   setPersist((prev) => !prev);
+  // };
+
+  // useEffect(() => {
+  //   localStorage.setItem("persist", persist);
+  // }, [persist]);
 
   return (
     <>
@@ -78,8 +90,9 @@ const Login = () => {
             id="username"
             ref={userRef}
             autoComplete="off"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            // onChange={(e) => setUsername(e.target.value)}
+            // value={username}
+            {...userAttribute}
             required
           />
 
@@ -92,6 +105,15 @@ const Login = () => {
             required
           />
           <button>Sign In</button>
+          <div className="persistCheck">
+            <input
+              type="checkbox"
+              id="persist"
+              onChange={toggleCheck}
+              checked={check}
+            />
+            <label htmlFor="persist"> Trust Device? </label>
+          </div>
         </form>
       </section>
     </>
