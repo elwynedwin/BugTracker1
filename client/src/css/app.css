@@ -2,18 +2,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: #2F3C7E;
+}
+
+* .a {
+    color: #2F3C7E;
 }
 
 html {
     font-family: 'Nunito', sans-serif;
     font-size: 17px;
-    color: #fff;
+    color: #2F3C7E;
 }
 
 body {
     min-height: 100vh;
-    background-color: dodgerblue;
+    background-color: #FBEAEB;
 }
+/* #2F3C7E + #FBEAEB */
 
 .App {
   display: flex;
@@ -21,10 +27,20 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh; 
-  padding: 1rem 0.5rem;
+  /* padding: 1rem 0.5rem; */
+}
+
+.navbar {
+    background-color: #2F3C7E;
+}
+
+.navbar-container {
+    padding: 0;
+
 }
 
 
+ /* Persistant Checking Styling */
 .persistCheck {
     font-size: 0.75rem;
     margin-top: 10px;

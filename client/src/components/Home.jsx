@@ -19,6 +19,7 @@ const Home = () => {
         <Link to="/admin">Admin</Link>
         <Link to="/editor">Editor</Link>
         <Link to="/linkpage">Linkpage</Link>
+        <Link to="/dashboard">Dashboard</Link>
         <div>
           <button onClick={signOut}>Sign Out</button>
         </div>
