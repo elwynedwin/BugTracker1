@@ -86,151 +86,155 @@ const Register = () => {
 
   return (
     <>
-      <section>
-        <p
-          ref={errRef}
-          className={errMsg ? "errmsg" : "offscreen"}
-          aria-live="assertive"
-        >
-          {errMsg}
-        </p>
-
-        <h1>Register</h1>
-        <form onSubmit={handleRegisterSubmit}>
-          {/* Username Field Form Logic */}
-          <label htmlFor="username">
-            Username:
-            <FontAwesomeIcon
-              icon={faCheck}
-              className={validUsername ? "valid" : "hide"}
-            />
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={validUsername || !username ? "hide" : "invalid"}
-            />
-          </label>
-          <input
-            type="text"
-            id="username"
-            ref={userRef}
-            autoComplete="off"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-            required
-            aria-invalid={validUsername ? "false" : "true"}
-            aria-describedby="uidnote"
-            onFocus={() => setUsernameFocus(true)}
-            onBlur={() => setUsernameFocus(false)}
-          />
+      {success ? (
+        <p>Success! You have Registered</p>
+      ) : (
+        <section>
           <p
-            id="uidnote"
-            className={
-              usernameFocus && username && !validUsername
-                ? "instructions"
-                : "offscreen"
-            }
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
           >
-            4-24 Characters
-            <br />
-            Must begin with a letter.
-            <br />
-            Letters, numbers, underscores, hyphens allowed.
+            {errMsg}
           </p>
 
-          {/* Password Field Form Logic */}
-          <label htmlFor="password">
-            Password:
-            <FontAwesomeIcon
-              icon={faCheck}
-              className={validPassword ? "valid" : "hide"}
+          <h1>Register</h1>
+          <form onSubmit={handleRegisterSubmit}>
+            {/* Username Field Form Logic */}
+            <label htmlFor="username">
+              Username:
+              <FontAwesomeIcon
+                icon={faCheck}
+                className={validUsername ? "valid" : "hide"}
+              />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={validUsername || !username ? "hide" : "invalid"}
+              />
+            </label>
+            <input
+              type="text"
+              id="username"
+              ref={userRef}
+              autoComplete="off"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              required
+              aria-invalid={validUsername ? "false" : "true"}
+              aria-describedby="uidnote"
+              onFocus={() => setUsernameFocus(true)}
+              onBlur={() => setUsernameFocus(false)}
             />
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={validPassword || !password ? "hide" : "invalid"}
-            />
-          </label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-            required
-            aria-invalid={validPassword ? "false" : "true"}
-            aria-describedby="pwdnote"
-            onFocus={() => setPasswordFocus(true)}
-            onBlur={() => setPasswordFocus(false)}
-          />
-          <p
-            id="pwdnote"
-            className={
-              passwordFocus && !validPassword ? "instructions" : "offscreen"
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            8 to 24 characters.
-            <br />
-            Must include uppercase and lowercase letters, a number and a special
-            character.
-            <br />
-            Allowed special characters:{" "}
-            <span aria-label="exclamation mark">!</span>{" "}
-            <span aria-label="at symbol">@</span>{" "}
-            <span aria-label="hashtag">#</span>{" "}
-            <span aria-label="dollar sign">$</span>{" "}
-            <span aria-label="percent">%</span>
-          </p>
-
-          {/* Confirm Password Field Form Logic */}
-          <label htmlFor="confirm_pwd">
-            Confirm Password:
-            <FontAwesomeIcon
-              icon={faCheck}
+            <p
+              id="uidnote"
               className={
-                validPasswordConfirm && passwordConfirm ? "valid" : "hide"
+                usernameFocus && username && !validUsername
+                  ? "instructions"
+                  : "offscreen"
               }
-            />
-            <FontAwesomeIcon
-              icon={faTimes}
-              className={
-                validPasswordConfirm || !passwordConfirm ? "hide" : "invalid"
-              }
-            />
-          </label>
-          <input
-            type="password"
-            id="confirm_password"
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-            value={passwordConfirm}
-            required
-            aria-invalid={validPassword ? "false" : "true"}
-            aria-describedby="confirmnote"
-            onFocus={() => setPasswordConfirmFocus(true)}
-            onBlur={() => setPasswordConfirmFocus(false)}
-          />
-          <p
-            id="confirmnote"
-            className={
-              passwordConfirmFocus && !validPasswordConfirm
-                ? "instructions"
-                : "offscreen"
-            }
-          >
-            <FontAwesomeIcon icon={faInfoCircle} />
-            Must match the first password input field.
-          </p>
+            >
+              4-24 Characters
+              <br />
+              Must begin with a letter.
+              <br />
+              Letters, numbers, underscores, hyphens allowed.
+            </p>
 
-          {/* Form Button Submit */}
-          <button
-            disabled={
-              !validUsername || !validPassword || !validPasswordConfirm
-                ? true
-                : false
-            }
-          >
-            Sign Up
-          </button>
-        </form>
-      </section>
+            {/* Password Field Form Logic */}
+            <label htmlFor="password">
+              Password:
+              <FontAwesomeIcon
+                icon={faCheck}
+                className={validPassword ? "valid" : "hide"}
+              />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={validPassword || !password ? "hide" : "invalid"}
+              />
+            </label>
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+              aria-invalid={validPassword ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPasswordFocus(true)}
+              onBlur={() => setPasswordFocus(false)}
+            />
+            <p
+              id="pwdnote"
+              className={
+                passwordFocus && !validPassword ? "instructions" : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              8 to 24 characters.
+              <br />
+              Must include uppercase and lowercase letters, a number and a
+              special character.
+              <br />
+              Allowed special characters:{" "}
+              <span aria-label="exclamation mark">!</span>{" "}
+              <span aria-label="at symbol">@</span>{" "}
+              <span aria-label="hashtag">#</span>{" "}
+              <span aria-label="dollar sign">$</span>{" "}
+              <span aria-label="percent">%</span>
+            </p>
+
+            {/* Confirm Password Field Form Logic */}
+            <label htmlFor="confirm_pwd">
+              Confirm Password:
+              <FontAwesomeIcon
+                icon={faCheck}
+                className={
+                  validPasswordConfirm && passwordConfirm ? "valid" : "hide"
+                }
+              />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={
+                  validPasswordConfirm || !passwordConfirm ? "hide" : "invalid"
+                }
+              />
+            </label>
+            <input
+              type="password"
+              id="confirm_password"
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+              value={passwordConfirm}
+              required
+              aria-invalid={validPassword ? "false" : "true"}
+              aria-describedby="confirmnote"
+              onFocus={() => setPasswordConfirmFocus(true)}
+              onBlur={() => setPasswordConfirmFocus(false)}
+            />
+            <p
+              id="confirmnote"
+              className={
+                passwordConfirmFocus && !validPasswordConfirm
+                  ? "instructions"
+                  : "offscreen"
+              }
+            >
+              <FontAwesomeIcon icon={faInfoCircle} />
+              Must match the first password input field.
+            </p>
+
+            {/* Form Button Submit */}
+            <button
+              disabled={
+                !validUsername || !validPassword || !validPasswordConfirm
+                  ? true
+                  : false
+              }
+            >
+              Sign Up
+            </button>
+          </form>
+        </section>
+      )}
     </>
   );
 };

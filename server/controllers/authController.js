@@ -33,17 +33,21 @@ const handleLogin = async (req, res) => {
     );
     // Saving refreshToken with current username
     searchedUser.refreshToken = refreshToken;
+
     const result = await searchedUser.save();
     console.log(result);
     console.log(roles);
 
     // Creates Secure Cookie with refresh token
     res.cookie("jwt", refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
       maxAge: 24 * 60 * 60 * 1000,
     });
+
+    // httpOnly: true,
+    //   secure: true,
+    //   sameSite: "None",
+
+    console.log("sent to browser!");
 
     // Send authorization roles and access token to use
     res.json({ roles, accessToken });

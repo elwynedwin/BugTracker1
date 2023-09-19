@@ -12,6 +12,7 @@ import "./css/app.css";
 
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
+import Dashboard from "./components/Dashboard";
 
 const ROLES = {
   Admin: 5389,
@@ -32,7 +33,8 @@ function App() {
         <Route element={<PersistentLogin />}>
           <Route element={<RequireAuth allowedRoles={[ROLES.User]} />}>
             <Route path="/" element={<Home />} />
-            <Route path="/linkpage" element={<LinkPage />} />
+            <Route path="linkpage" element={<LinkPage />} />
+            <Route path="dashboard" element={<Dashboard />} />
           </Route>
 
           <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
