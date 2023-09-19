@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 const Editor = () => {
   return (
     <>
-      <div>Editor Access</div>
-      <Link to="/">Home</Link>
+      <section>
+        <div>Editor Access</div>
+        <Link to="/">Home</Link>
+      </section>
     </>
   );
 };

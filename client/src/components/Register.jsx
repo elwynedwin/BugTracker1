@@ -87,7 +87,9 @@ const Register = () => {
   return (
     <>
       {success ? (
-        <p>Success! You have Registered</p>
+        <section>
+          <p>Success! You have Registered</p>
+        </section>
       ) : (
         <section>
           <p

@@ -5,13 +5,15 @@ import Users from "./Users";
 const Admin = () => {
   return (
     <>
-      <div>Admin Access</div>
-      <br />
-      <Users />
-      <br />
-      <div>
-        <Link to="/">Home</Link>
-      </div>
+      <section>
+        <div>Admin Access</div>
+        <br />
+        <Users />
+        <br />
+        <div>
+          <Link to="/">Home</Link>
+        </div>
+      </section>
     </>
   );
 };

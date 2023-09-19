@@ -8,6 +8,8 @@ import Unauthorized from "./components/Unauthorized";
 import Home from "./components/Home";
 import LinkPage from "./components/LinkPage";
 import PersistentLogin from "./components/PersistentLogin";
+
+import "bootstrap/dist/css/bootstrap.css";
 import "./css/app.css";
 
 import { Routes, Route } from "react-router-dom";
@@ -19,6 +21,7 @@ const ROLES = {
   Editor: 6754,
   User: 3982,
 };
+
 
 function App() {
   return (

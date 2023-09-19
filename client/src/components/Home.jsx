@@ -13,14 +13,16 @@ const Home = () => {
 
   return (
     <>
-      <div>Home Access</div>
-      <Link to="/">Home</Link>
-      <Link to="/admin">Admin</Link>
-      <Link to="/editor">Editor</Link>
-      <Link to="/linkpage">Linkpage</Link>
-      <div>
-        <button onClick={signOut}>Sign Out</button>
-      </div>
+      <section>
+        <div>Home Access</div>
+        <Link to="/">Home</Link>
+        <Link to="/admin">Admin</Link>
+        <Link to="/editor">Editor</Link>
+        <Link to="/linkpage">Linkpage</Link>
+        <div>
+          <button onClick={signOut}>Sign Out</button>
+        </div>
+      </section>
     </>
   );
 };
