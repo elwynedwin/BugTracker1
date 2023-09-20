@@ -1,0 +1,21 @@
+.dashboard-card {
+    width: 100%;
+    margin-top: 40px;
+}
+
+.priority-card {
+    margin-top: 40px;
+}
+
+.doughnut-chart {
+    max-width:50%;
+    max-height: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.add-project-button {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}

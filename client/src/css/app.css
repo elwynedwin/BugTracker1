@@ -2,24 +2,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: #2F3C7E;
+    color: black;
 }
 
-* .a {
-    color: #2F3C7E;
-}
 
 html {
     font-family: 'Nunito', sans-serif;
     font-size: 17px;
-    color: #2F3C7E;
+    color: #E9F1FA;
 }
 
 body {
     min-height: 100vh;
-    background-color: #FBEAEB;
+    background-color: #00ABE4;
 }
-/* #2F3C7E + #FBEAEB */
+
 
 .App {
   display: flex;
@@ -31,7 +28,7 @@ body {
 }
 
 .navbar {
-    background-color: #2F3C7E;
+    background-color: #00ABE4;
 }
 
 .navbar-container {
