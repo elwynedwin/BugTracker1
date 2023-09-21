@@ -10,11 +10,11 @@ const projectSchema = new Schema({
   projectDescription: {
     type: String,
   },
-  adminUserId: {
-    type: User.Types.ObjectId,
-    required: true,
-  },
-  team: [{ type: User.Types.ObjectId, required: true }],
+  // adminUserId: {
+  //   type: User.Types.ObjectId,
+  //   required: true,
+  // },
+  team: [{ type: String, required: true }],
 });
 
 module.exports = mongoose.model("Project", projectSchema);
